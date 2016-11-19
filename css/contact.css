@@ -1,0 +1,33 @@
+.contact_us_logo_wrapper {
+    text-align: center;
+    padding-top: 175px;
+}
+
+.contact_us_logo_wrapper img {
+    width: 330px;
+}
+
+.contact {
+    height: auto;
+    margin: 0;
+    padding: 95px 0 105px;
+}
+
+.contact_us_detail {
+    text-align: center;
+}
+
+.contact_us_detail p {
+    margin: 6px 0;
+    line-height: 1.5;
+    font-size: 18px;
+    color: rgb(89, 87, 87);
+}
+
+.contact_bg {
+    text-align: center;
+}
+
+.contact_bg img {
+    width: 1026px;
+}

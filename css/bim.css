@@ -1,0 +1,141 @@
+html,
+body {
+    height: 100%;
+    overflow: hidden;
+}
+
+.content {
+    text-align: center;
+    position: relative;
+}
+
+.content_maintitle_wrapper {
+    padding: 143px 0px 76px;
+    font-size: 0px;
+    transition: 0.6s;
+}
+
+.content_maintitle {
+    letter-spacing: 2px;
+    display: inline-block;
+    font-size: 26px;
+    color: rgb(123, 123, 123);
+    vertical-align: middle;
+}
+
+.line_yellow {
+    margin: 0 24px;
+    position: relative;
+    vertical-align: middle;
+}
+
+.content_main {
+    margin: 0 auto;
+    width: 100%;
+    /*max-width: 1366px;*/
+    /*border: 1px solid red;*/
+    /*height: 768px;*/
+}
+
+.content_bg {
+    height: 768px;
+    background-size: cover;
+    /*background: url(../public/imgs/BIM-bg1.png);*/
+}
+
+.build_1 {
+    background: url(../public/imgs/building1-half-t.png);
+    background-position: 106.4% bottom;
+}
+
+.build_2 {
+    background: url(../public/imgs/building1-half-b.png);
+    background-position: 100% top;
+}
+
+.build_3 {
+    background: url(../public/imgs/building2-half-t.png);
+    background-position: 0% bottom;
+}
+
+.build_4 {
+    background-image: url(../public/imgs/building2-half-b.png), url(../public/imgs/building3-half-t.png);
+    background-position: 6% top, 96% bottom;
+}
+
+.build_5 {
+    background-image: url(../public/imgs/building3-half-b.png);
+    background-position: 89% top;
+}
+
+.presentation_build {
+    text-align: left;
+    height: 100%;
+    overflow: hidden;
+    background-repeat: no-repeat;
+    background-size: 33% auto;
+}
+
+.presentation {
+    margin-left: 14%;
+    display: inline-block;
+    opacity: 0.3;
+}
+
+.presentation_right {
+    margin-left: 38%;
+}
+
+.presentation_title {
+    display: inline-block;
+    padding: 10px 12px;
+    line-height: 1.5;
+    font-size: 24px;
+    background: rgb(207, 219, 0);
+    color: rgb(97, 97, 97);
+    margin-top: 240px;
+}
+
+.presentation_content {
+    line-height: 1.4;
+    width: 80%;
+    max-width: 580px;
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+
+.presentation_img_wrapper {
+    font-size: 0px;
+}
+
+.presentation_img_wrapper img {
+    width: 18%;
+    max-width: 166px;
+}
+
+.presentation_img_wrapper img:nth-child(2) {
+    margin-left: -2px;
+}
+
+.presentation_img_wrapper img:nth-child(3) {
+    margin-left: -2px;
+}
+
+.horizonal_img img {
+    margin-right: 25px;
+    width: 36%;
+    max-width: 223px;
+}
+
+.vertical_img img {
+    display: block;
+    margin-bottom: 28px;
+    width: 40%;
+    max-width: 275px;
+}
+
+@media screen and (max-width: 540px) {
+    .content_maintitle_wrapper {
+        padding: 76px 0px 36px;
+    }
+}

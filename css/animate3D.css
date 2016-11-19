@@ -1,0 +1,234 @@
+.content {
+    text-align: center;
+    position: relative;
+}
+
+.content_maintitle_wrapper {
+    padding: 143px 0px 76px;
+    font-size: 0px;
+    transition: 0.6s;
+}
+
+.content_maintitle {
+    letter-spacing: 2px;
+    display: inline-block;
+    font-size: 26px;
+    color: rgb(123, 123, 123);
+    vertical-align: middle;
+}
+
+.line_yellow {
+    margin: 0 24px;
+    position: relative;
+    vertical-align: middle;
+}
+
+.video {
+    background: white;
+}
+
+.video_shortcut {
+    font-size: 0px;
+    text-align: center;
+    position: relative;
+    padding-bottom: 65px;
+    width: 84%;
+    min-width: 730px;
+    margin: 0 auto;
+}
+
+.video_wrapper {
+    display: inline-block;
+    position: relative;
+    /*width: 100%;*/
+}
+
+.video_wrapper img:nth-child(1) {
+    width: 100%;
+    max-width: 1138px;
+    /*min-width: 800px;*/
+}
+
+.video_wrapper .playbtn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+}
+
+.video_desc {
+    text-align: left;
+    box-sizing: border-box;
+    padding: 27px 30px 12px;
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+    /*min-width: 800px;*/
+    /*height: 100px;*/
+    background: rgba(57, 56, 46, 0.7);
+    color: rgb(180, 180, 180);
+}
+
+.video_desc p:nth-child(1) {
+    margin-bottom: 12px;
+    font-size: 30px;
+}
+
+.video_desc p:nth-child(2) {
+    margin: 5px;
+    font-size: 15px;
+    line-height: 1.4;
+}
+
+.content_main {
+    max-width: 1023px;
+    min-width: 700px;
+    width: 85%;
+    margin: 0 auto;
+}
+
+.content_3d_item {
+    padding-top: 46px;
+    font-size: 0px;
+    text-align: left;
+    border-bottom: 1px solid rgb(191, 191, 191);
+}
+
+.item_img_wrapper {
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+    width: 50%;
+}
+
+.item_img_wrapper img:nth-child(1) {
+    max-width: 494px;
+    width: 96%;
+    margin: 10px 0;
+    border: 8px solid white;
+}
+
+.playbtn {
+    width: 48px;
+    height: 42px;
+    position: absolute;
+    top: 50%;
+    margin-top: -24px;
+    left: 50%;
+    margin-left: -21px;
+}
+
+.item_desc_wrapper {
+    /*margin: 0 10px 0 52px;*/
+    margin-right: 1%;
+    margin-left: 5%;
+    display: inline-block;
+    max-width: 345px;
+    width: 34%;
+    vertical-align: middle;
+}
+
+.item_desc_wrapper p:nth-child(1) {
+    font-size: 30px;
+    padding-bottom: 12px;
+    color: rgb(180, 180, 180);
+}
+
+.item_desc_wrapper p:nth-child(2) {
+    font-size: 15px;
+    line-height: 1.5;
+    padding-top: 14px;
+    color: rgb(190, 190, 190);
+}
+
+.img_in_right {
+    margin-left: 4%;
+}
+
+.desc_in_left {
+    text-align: right;
+    margin-left: 8%;
+}
+
+@media screen and (max-width: 770px) {
+    .video_shortcut {
+        width: 94%;
+        min-width: 370px;
+    }
+}
+
+@media screen and (max-width: 730px) {
+    .content_main {
+        min-width: 370px;
+        width: 90%;
+        margin: 0 auto;
+    }
+    .content_3d_item {
+        text-align: center;
+    }
+    .item_img_wrapper {
+        width: 90%;
+    }
+    .item_img_wrapper img:nth-child(1) {
+        max-width: 650px;
+        width: 96%;
+        margin: 10px 0;
+        border: 8px solid white;
+    }
+    .item_desc_wrapper {
+        margin-right: 0;
+        margin-left: 0;
+        display: block;
+        max-width: 100%;
+        width: 90%;
+        margin: 0 auto 20px;
+        /*width: 34%;*/
+        vertical-align: middle;
+    }
+    .item_desc_wrapper p:nth-child(1) {
+        /*text-align: center;*/
+        font-size: 30px;
+        padding-bottom: 12px;
+        color: rgb(180, 180, 180);
+        /*width: 100%;*/
+    }
+    .item_desc_wrapper p:nth-child(2) {
+        /*text-align: center;*/
+        font-size: 15px;
+        line-height: 1.5;
+        padding-top: 14px;
+        color: rgb(190, 190, 190);
+        /*width: 100%;*/
+    }
+    .img_in_right {
+        margin-left: 0;
+    }
+    .desc_in_left {
+        text-align: center;
+        margin-left: 0;
+    }
+}
+
+@media screen and (max-width: 610px) {
+    .video_desc {
+        position: static;
+        background: rgba(80, 80, 80, 1.0);
+        color: rgb(240, 240, 240);
+    }
+    .video_wrapper .playbtn {
+        position: absolute;
+        top: 35%;
+        left: 50%;
+    }
+    .video_desc p:nth-child(1) {
+        font-size: 24px;
+    }
+    .video_desc p:nth-child(2) {
+        font-size: 13px;
+    }
+}
+
+@media screen and (max-width: 540px) {
+    .content_maintitle_wrapper {
+        padding: 76px 0px 36px;
+    }
+}
