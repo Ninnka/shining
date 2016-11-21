@@ -9,14 +9,6 @@
     transition: 0.6s;
 }
 
-.content_maintitle {
-    letter-spacing: 2px;
-    display: inline-block;
-    font-size: 26px;
-    color: rgb(123, 123, 123);
-    vertical-align: middle;
-}
-
 .line_yellow {
     margin: 0 24px;
     position: relative;

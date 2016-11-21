@@ -1,10 +1,16 @@
 window.onload = function () {
   navListener();
+  addNavIconClickListener();
+  addWindowResizeListener();
+
 
   let imgs_wrapper = document.querySelector(".banner_wrapper");
   let imgs = document.querySelectorAll(".banner_wrapper li");
   let indexes = document.querySelectorAll(".banner_navigator li");
   let content = document.querySelector(".content");
+  let nav_icon = document.querySelector(".nav_icon");
+  let nav_wrapper = document.querySelector(".nav_wrapper");
+  let nav_common = document.querySelector(".nav");
   let currentImg = 0;
 
   let imgs_wrapper_timer;
@@ -12,8 +18,6 @@ window.onload = function () {
   let isScroll = false;
 
   function getStyle(obj, attr) {
-    // 第一个参数:具体的元素
-    // 第二个参数:具体属性 ,例如width等
     if (obj.currentStyle) {
       return obj.currentStyle[attr];
     }
@@ -127,12 +131,17 @@ window.onload = function () {
     clearInterval(imgs_wrapper_timer);
     if (isScroll === false) {
       let tmp = imgs_wrapper.offsetWidth;
-      console.log("currentImg:" + currentImg);
+      // console.log("currentImg:" + currentImg);
       imgs_wrapper.style.left = -currentImg * tmp + "px";
     }
     resize_timeout = setTimeout(function () {
       autoScroll();
     }, 2500);
+    if (document.documentElement.clientWidth >= 680) {
+      nav_wrapper.style.display = "";
+      nav_icon.className = "nav_icon";
+      nav_common.className = "nav";
+    }
   };
 
   let srcStrPrefix = "../public/imgs/P_";
@@ -152,7 +161,7 @@ window.onload = function () {
       let tmpImg = new Image();
       tmpImg.className = "falldown_img";
       tmpImg.onload = function () {
-        console.log("onload");
+        // console.log("onload");
       };
       tmpImg.src = tmpImgSrc;
 
@@ -190,7 +199,6 @@ window.onload = function () {
     }
     // 调整宽度
     let fd_img_wrappers = document.querySelectorAll(".tmp_div");
-    console.log("fd_img_wrappers.length: " + fd_img_wrappers.length);
   }
   createImg();
 

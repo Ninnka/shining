@@ -2,6 +2,11 @@ window.onload = function () {
   let content_item_wrappers = document.getElementsByClassName("content_item_wrapper");
 
   navListener();
+  addNavIconClickListener();
+  
+  let nav_icon = document.querySelector(".nav_icon");
+  let nav_wrapper = document.querySelector(".nav_wrapper");
+  let nav = document.querySelector(".nav");
 
   for (let i = 0; i < content_item_wrappers.length; i++) {
     let img = content_item_wrappers[i].querySelector("img");
@@ -43,6 +48,11 @@ window.onload = function () {
   window.onresize = function () {
     if (document.documentElement.clientWidth > 921) {
       initContentItemImg();
+    }
+    if (document.documentElement.clientWidth >= 680) {
+      nav_wrapper.style.display = "";
+      nav_icon.className = "nav_icon";
+      nav.className = "nav";
     }
   };
 };

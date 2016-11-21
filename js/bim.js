@@ -1,24 +1,26 @@
 window.onload = function () {
   navListener();
+  addNavIconClickListener();
+  addWindowResizeListener();
 
   let currentPage = 0;
+  let maxPages = 6;
 
   let wrapper = document.querySelector(".wrapper");
   let contents = document.querySelectorAll(".content_bg");
 
   let doc_clientHeight;
 
-  let nav = document.querySelector(".nav");
+  let nav = document.querySelector("#head");
   let content_maintitle_wrapper = document.querySelector(".content_maintitle_wrapper");
   let contact_wrapper = document.querySelector(".contact");
   let yl = document.querySelector(".yl");
   let copyright_wrapper = document.querySelector(".copyright");
   let footer_height = contact_wrapper.offsetHeight + yl.offsetHeight + copyright_wrapper.offsetHeight;
   let top_height = nav.offsetHeight + content_maintitle_wrapper.offsetHeight;
-  console.log("top_height: " + top_height);
+  // console.log("top_height: " + top_height);
 
   let back_to_top = document.querySelector("#backtotop");
-
 
   // 调整宽度
   function adjustHeightAndBg() {
@@ -39,10 +41,21 @@ window.onload = function () {
     }
   }
 
+  function adjustMarginTop() {
+    doc_clientHeight = document.documentElement.clientHeight;
+    top_height = nav.offsetHeight + content_maintitle_wrapper.offsetHeight;
+    let tmpMarginTop;
+    if (currentPage >= 1 && currentPage <= maxPages) {
+      tmpMarginTop = (currentPage - 1) * doc_clientHeight + top_height;
+      wrapper.style["margin-top"] = -tmpMarginTop + "px";
+    }
+  }
+
   window.addEventListener("resize", function () {
     resetHeight();
+    adjustMarginTop();
     top_height = nav.offsetHeight + content_maintitle_wrapper.offsetHeight;
-    console.log("top_height: " + top_height);
+    // console.log("top_height: " + top_height);
   });
 
   let isWheel = false;
@@ -145,6 +158,11 @@ window.onload = function () {
     }
     return offsetTop;
   }
+
+  nav_icon.addEventListener("click", function () {
+    top_height = nav.offsetHeight + content_maintitle_wrapper.offsetHeight;
+    // console.log(top_height);
+  });
 
   function getStyle(obj, attr) {
     // 第一个参数:具体的元素

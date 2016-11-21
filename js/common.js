@@ -1,12 +1,9 @@
-// window.onload = function () {
-//   let currentNav = 1;
-//   let nav_lis = document.querySelectorAll(".nav_wrapper li");
-//   console.log(nav_lis.length);
-//   // 导航栏点击和悬浮事件
-//
-// }
 let currentNav = 1;
 let nav_lis = document.querySelectorAll(".nav_wrapper li");
+
+let nav_icon = document.querySelector(".nav_icon");
+let nav_wrapper = document.querySelector(".nav_wrapper");
+let nav_common = document.querySelector(".nav");
 
 function navListener() {
   for (let i = 0; i < nav_lis.length; i++) {
@@ -29,4 +26,29 @@ function navListener() {
       nav_lis[i].className = "nav_item_active";
     }, false);
   }
+}
+
+function addNavIconClickListener() {
+  nav_icon.addEventListener("click", function () {
+    if (nav_wrapper.style.display === "none" || nav_wrapper.style.display === "") {
+      nav_wrapper.style.display = "inline-block";
+      nav_common.className = "nav_active";
+      nav_icon.className = "nav_icon_active";
+    } else {
+      nav_wrapper.style.display = "none";
+      nav_common.className = "nav";
+      nav_icon.className = "nav_icon";
+    }
+
+  });
+}
+
+function addWindowResizeListener() {
+  window.onresize = function () {
+    if (document.documentElement.clientWidth >= 680) {
+      nav_wrapper.style.display = "";
+      nav_icon.className = "nav_icon";
+      nav_common.className = "nav";
+    }
+  };
 }

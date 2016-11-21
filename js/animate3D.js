@@ -1,5 +1,7 @@
 window.onload = function () {
   navListener();
+  addNavIconClickListener();
+  addWindowResizeListener();
 
   let back_to_top = document.querySelector("#backtotop");
   let to_top_timer;
