@@ -163,6 +163,7 @@ a {
 @media screen and (max-width: 640px) {
     .nav {
         padding-top: 57px;
+        height: 49px;
     }
     .nav_wrapper li {
         text-align: center;

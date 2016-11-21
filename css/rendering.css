@@ -71,7 +71,7 @@
     position: absolute;
     padding: 5px 5px;
     font-size: 0px;
-    bottom: 30px;
+    bottom: 4%;
     left: 50%;
     margin-left: -41px;
 }
@@ -96,12 +96,19 @@
 }
 
 .falldown {
-    width: 1000px;
+    max-width: 1100px;
+    width: 80%;
     /*height: 100px;*/
     /*border: 1px solid red;*/
     margin: 66px auto;
     font-size: 0px;
     position: relative;
+    transition: 0.4s;
+}
+
+.falldown_wrapper {
+    width: 100%;
+    transition: 0.4s;
 }
 
 .tmp_li {
@@ -109,25 +116,29 @@
     flex-wrap: nowrap;
     overflow: hidden;
     width: 100%;
+    transition: 0.4s;
 }
 
 .tmp_div {
-    flex-shrink: 0;
+    flex-shrink: 1;
     flex-grow: 1;
     display: inline-block;
     display: flex;
     font-size: 0px;
-    margin: 0 15px 15px;
+    margin: 0 1% 1%;
     flex-wrap: nowrap;
     position: relative;
     overflow: hidden;
+    transition: 0.4s;
 }
 
 .falldown_img {
     flex-grow: 1;
     flex-shrink: 0;
     width: auto;
+    /*max-height: 300px;*/
     height: 300px;
+    transition: 0.4s;
 }
 
 .search_layout {
@@ -146,12 +157,12 @@
 .search_button {
     width: 30px;
     height: 30px;
-    margin-top: 20%;
+    margin-top: 16%;
 }
 
 .img_title {
     font-size: 24px;
-    margin-top: 15%;
+    margin-top: 10%;
     color: white;
     text-align: center;
     line-height: 20px;
@@ -160,5 +171,65 @@
 @media screen and (max-width: 540px) {
     .content_maintitle_wrapper {
         padding: 76px 0px 36px;
+    }
+}
+
+@media screen and (max-width: 1280px) {
+    .falldown_img {
+        height: 260px;
+    }
+    .falldown {
+        width: 82%;
+    }
+    .img_title {
+        font-size: 22px;
+    }
+}
+
+@media screen and (max-width: 1140px) {
+    .falldown_img {
+        height: 230px;
+    }
+    .falldown {
+        width: 84%;
+    }
+    .img_title {
+        font-size: 20px;
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    .falldown_img {
+        height: 200px;
+    }
+    .falldown {
+        width: 86%;
+    }
+    .img_title {
+        font-size: 17px;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .falldown_img {
+        height: 150px;
+    }
+    .falldown {
+        width: 89%;
+    }
+    .img_title {
+        font-size: 15px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .falldown_img {
+        height: 100px;
+    }
+    .falldown {
+        width: 92%;
+    }
+    .img_title {
+        font-size: 12px;
     }
 }
