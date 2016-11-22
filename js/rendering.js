@@ -149,62 +149,106 @@ window.onload = function () {
   let currentFDImgIndex = 0;
   let tmpImgSrc;
   let falldown_wrapper = document.querySelector(".falldown_wrapper");
+  let falldownLis = document.querySelectorAll(".falldown_wrapper li");
 
-  function createImg() {
-    let tmpLi = document.createElement("li");
-    tmpLi.className = "tmp_li";
-    for (let i = 0; i < 15; i++) {
-      tmpImgSrc = srcStrPrefix + "0" + i + srcStrAfter;
+  // function createImg() {
+  //   let tmpLi = document.createElement("li");
+  //   tmpLi.className = "tmp_li";
+  //   for (let i = 0; i < 15; i++) {
+  //     tmpImgSrc = srcStrPrefix + "0" + i + srcStrAfter;
+  //     let tmpDiv = document.createElement("div");
+  //     tmpDiv.className = "tmp_div";
+  //
+  //     let tmpImg = new Image();
+  //     tmpImg.className = "falldown_img";
+  //     tmpImg.onload = function () {
+  //       // console.log("onload");
+  //     };
+  //     tmpImg.src = tmpImgSrc;
+  //
+  //     tmpDiv.appendChild(tmpImg);
+  //     let search_layout = document.createElement("div");
+  //     search_layout.className = "search_layout";
+  //     let search_button = new Image();
+  //     search_button.className = "search_button";
+  //     search_button.src = "../public/imgs/magnifier.png";
+  //
+  //     search_layout.appendChild(search_button);
+  //     let img_title = document.createElement("p");
+  //     img_title.className = "img_title";
+  //     img_title.innerHTML = "图片标题";
+  //     search_layout.appendChild(img_title);
+  //     tmpDiv.appendChild(search_layout);
+  //
+  //     tmpDiv.addEventListener("mouseover", function () {
+  //       tmpDiv.querySelector(".search_layout")
+  //         .style.display = "block";
+  //     });
+  //     tmpDiv.addEventListener("mouseout", function () {
+  //       tmpDiv.querySelector(".search_layout")
+  //         .style.display = "none";
+  //     });
+  //     if (i % 3 === 0 && i !== 0) {
+  //       falldown_wrapper.appendChild(tmpLi);
+  //       tmpLi = document.createElement("li");
+  //       tmpLi.className = "tmp_li";
+  //     }
+  //     tmpLi.appendChild(tmpDiv);
+  //     if (i === 14) {
+  //       falldown_wrapper.appendChild(tmpLi);
+  //     }
+  //   }
+  //   // 调整宽度
+  //   let fd_img_wrappers = document.querySelectorAll(".tmp_div");
+  // }
+  // createImg();
+
+  let heightArr = [];
+  let total = 0;
+
+  function createFallDown() {
+    let marginBottom = parseInt((falldown_wrapper.offsetWidth * 0.01)
+      .toFixed(0));
+    let tmpTotal = total;
+    for (let i = total; i < tmpTotal + 16; i++) {
+      // let flag = false;
+      tmpImgSrc = srcStrPrefix + "0" + i % 16 + srcStrAfter;
       let tmpDiv = document.createElement("div");
-      tmpDiv.className = "tmp_div";
-
+      tmpDiv.className = "falldown_img_wrapper";
       let tmpImg = new Image();
       tmpImg.className = "falldown_img";
-      tmpImg.onload = function () {
-        // console.log("onload");
-      };
-      tmpImg.src = tmpImgSrc;
-
       tmpDiv.appendChild(tmpImg);
-      let search_layout = document.createElement("div");
-      search_layout.className = "search_layout";
-      let search_button = new Image();
-      search_button.className = "search_button";
-      search_button.src = "../public/imgs/magnifier.png";
-
-      search_layout.appendChild(search_button);
-      let img_title = document.createElement("p");
-      img_title.className = "img_title";
-      img_title.innerHTML = "图片标题";
-      search_layout.appendChild(img_title);
-      tmpDiv.appendChild(search_layout);
-
-      tmpDiv.addEventListener("mouseover", function () {
-        tmpDiv.querySelector(".search_layout")
-          .style.display = "block";
-      });
-      tmpDiv.addEventListener("mouseout", function () {
-        tmpDiv.querySelector(".search_layout")
-          .style.display = "none";
-      });
-      if (i % 3 === 0 && i !== 0) {
-        falldown_wrapper.appendChild(tmpLi);
-        tmpLi = document.createElement("li");
-        tmpLi.className = "tmp_li";
+      if (i < 3) {
+        tmpImg.onload = function () {
+          falldownLis[i].appendChild(tmpDiv);
+          let tmpH = falldownLis[i].offsetHeight + marginBottom;
+          heightArr.push(tmpH);
+        };
+        tmpImg.src = tmpImgSrc;
+      } else {
+        tmpImg.onload = function () {
+          let minH = Math.min.apply(null, heightArr);
+          let index = heightArr.indexOf(minH);
+          falldownLis[index].appendChild(tmpDiv);
+          heightArr[index] = falldownLis[index].offsetHeight + marginBottom;
+        };
+        tmpImg.src = tmpImgSrc;
       }
-      tmpLi.appendChild(tmpDiv);
-      if (i === 14) {
-        falldown_wrapper.appendChild(tmpLi);
-      }
+      total++;
     }
-    // 调整宽度
-    let fd_img_wrappers = document.querySelectorAll(".tmp_div");
   }
-  createImg();
+  createFallDown();
 
   let back_to_top = document.querySelector("#backtotop");
   let to_top_timer;
   let inScroll = false;
+
+  back_to_top.addEventListener("click", function () {
+    if (!inScroll) {
+      inScroll = true;
+      moveAnimation(document.documentElement, "scrollTop", 0);
+    }
+  }, false);
 
   function getStyle(obj, attr) {
     // 第一个参数:具体的元素
@@ -245,20 +289,12 @@ window.onload = function () {
   // 懒加载
   let load_more_flag = 0;
   window.onscroll = function () {
-    if (getElementFullOffsetTop(content) + content.offsetHeight - document.documentElement.scrollTop < document.documentElement.clientHeight) {
+    if (getElementFullOffsetTop(falldown_wrapper) + falldown_wrapper.offsetHeight - document.documentElement.scrollTop < document.documentElement.clientHeight) {
       if (load_more_flag <= 1) {
-        createImg();
+        createFallDown();
         load_more_flag++;
       }
     }
   };
-
-
-  back_to_top.addEventListener("click", function () {
-    if (!inScroll) {
-      inScroll = true;
-      moveAnimation(document.documentElement, "scrollTop", 0);
-    }
-  }, false);
 
 };

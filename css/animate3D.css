@@ -53,13 +53,14 @@
 .video_desc {
     text-align: left;
     box-sizing: border-box;
-    padding: 27px 30px 12px;
+    padding: 1px 30px 12px;
     position: absolute;
     bottom: 0px;
     width: 100%;
     /*min-width: 800px;*/
     /*height: 100px;*/
     background: rgba(57, 56, 46, 0.7);
+    /*background: yellow;*/
     color: rgb(180, 180, 180);
 }
 
