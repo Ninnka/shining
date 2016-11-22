@@ -218,6 +218,25 @@ window.onload = function () {
       let tmpImg = new Image();
       tmpImg.className = "falldown_img";
       tmpDiv.appendChild(tmpImg);
+      let search_layout = document.createElement("div");
+      search_layout.className = "search_layout";
+      let search_button = new Image();
+      search_button.className = "search_button";
+      search_button.src = "../public/imgs/magnifier.png";
+      search_layout.appendChild(search_button);
+      let img_title = document.createElement("p");
+      img_title.className = "img_title";
+      img_title.innerHTML = "图片标题";
+      search_layout.appendChild(img_title);
+      tmpDiv.appendChild(search_layout);
+      tmpDiv.addEventListener("mouseover", function () {
+        tmpDiv.querySelector(".search_layout")
+          .style.display = "block";
+      });
+      tmpDiv.addEventListener("mouseout", function () {
+        tmpDiv.querySelector(".search_layout")
+          .style.display = "none";
+      });
       if (i < 3) {
         tmpImg.onload = function () {
           falldownLis[i].appendChild(tmpDiv);
