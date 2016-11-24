@@ -25,9 +25,11 @@
 }
 
 .contact_bg {
+    overflow: hidden;
     text-align: center;
 }
 
 .contact_bg img {
-    width: 1026px;
+    max-width: 1026px;
+    width: 100%;
 }

@@ -305,12 +305,15 @@ a {
         width: 360px;
         display: none;
         position: static;
+        text-align: center;
     }
     .nav_wrapper li {
         margin: 0 10px;
         width: 90px;
         height: 40px;
         line-height: 40px;
+        float: none;
+        display: inline-block;
     }
     .nav_icon {
         display: block;

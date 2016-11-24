@@ -39,8 +39,18 @@ function addNavIconClickListener() {
       nav_common.className = "nav";
       nav_icon.className = "nav_icon";
     }
-
   });
+  // nav_icon.onclick = function () {
+  //   if (nav_wrapper.style.display === "none" || nav_wrapper.style.display === "") {
+  //     nav_wrapper.style.display = "inline-block";
+  //     nav_common.className = "nav_active";
+  //     nav_icon.className = "nav_icon_active";
+  //   } else {
+  //     nav_wrapper.style.display = "none";
+  //     nav_common.className = "nav";
+  //     nav_icon.className = "nav_icon";
+  //   }
+  // };
 }
 
 function addWindowResizeListener() {
