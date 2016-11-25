@@ -54,6 +54,7 @@ define(function () {
   }
 
   return {
+    nav_icon: nav_icon,
     navListener: navListener,
     addNavIconClickListener: addNavIconClickListener,
     addWindowResizeListener: addWindowResizeListener

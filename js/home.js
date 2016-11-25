@@ -6,10 +6,6 @@ require(["common"], function (common) {
 
   var content_item_wrappers = document.getElementsByClassName("content_item_wrapper");
 
-  // var nav_icon = document.querySelector(".nav_icon");
-  // var nav_wrapper = document.querySelector(".nav_wrapper");
-  // var nav = document.querySelector(".nav");
-
   for (var i = 0; i < content_item_wrappers.length; i++) {
     content_item_wrappers[i].addEventListener("mouseover", function () {
       var img = this.querySelector("img");

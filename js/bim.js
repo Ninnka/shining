@@ -18,9 +18,11 @@ require(["common"], function (common) {
   var copyright_wrapper = document.querySelector(".copyright");
   var footer_height = contact_wrapper.offsetHeight + yl.offsetHeight + copyright_wrapper.offsetHeight;
   var top_height = nav.offsetHeight + content_maintitle_wrapper.offsetHeight;
-  // console.log("top_height: " + top_height);
 
   var back_to_top = document.querySelector("#backtotop");
+  common.nav_icon.addEventListener("click", function () {
+    top_height = nav.offsetHeight + content_maintitle_wrapper.offsetHeight;
+  });
 
   // 调整宽度
   function adjustHeightAndBg() {
@@ -101,7 +103,6 @@ require(["common"], function (common) {
     resetHeight();
     adjustMarginTop();
     top_height = nav.offsetHeight + content_maintitle_wrapper.offsetHeight;
-    // console.log("top_height: " + top_height);
   });
 
   var isWheel = false;
@@ -210,10 +211,4 @@ require(["common"], function (common) {
     }
     return offsetTop;
   }
-
-  nav_icon.addEventListener("click", function () {
-    top_height = nav.offsetHeight + content_maintitle_wrapper.offsetHeight;
-  });
-
-
 });
