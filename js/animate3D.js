@@ -27,7 +27,8 @@ require(["common"], function (common) {
   back_to_top.addEventListener("click", function () {
     if (!inScroll) {
       inScroll = true;
-      moveAnimation(document.documentElement, "scrollTop", 0);
+      var obj = document.body.scrollTop === 0 ? document.documentElement : document.body;
+      moveAnimation(obj, "scrollTop", 0);
     }
   }, false);
 });

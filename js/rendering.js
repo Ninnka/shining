@@ -279,7 +279,8 @@ require(["common"], function (common) {
   back_to_top.addEventListener("click", function () {
     if (!inScroll) {
       inScroll = true;
-      moveAnimation(document.documentElement, "scrollTop", 0);
+      var obj = document.body.scrollTop === 0 ? document.documentElement : document.body;
+      moveAnimation(obj, "scrollTop", 0);
     }
   }, false);
 
@@ -313,8 +314,8 @@ require(["common"], function (common) {
   // 懒加载
   var load_more_flag = 0;
   window.addEventListener("scroll", function () {
-    // console.log(getElementFullOffsetTop(falldown_wrapper));
-    if (getElementFullOffsetTop(falldown_wrapper) + falldown_wrapper.offsetHeight - document.documentElement.scrollTop < document.documentElement.clientHeight) {
+    var oTop = document.body.scrollTop === 0 ? document.documentElement.scrollTop : document.body.scrollTop;
+    if (getElementFullOffsetTop(falldown_wrapper) + falldown_wrapper.offsetHeight - oTop < document.documentElement.clientHeight) {
       if (load_more_flag <= 1) {
         createFallDown();
         load_more_flag++;

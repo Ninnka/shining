@@ -1,6 +1,7 @@
 .contact_us_logo_wrapper {
     text-align: center;
     padding-top: 175px;
+    transition: 0.4s;
 }
 
 .contact_us_logo_wrapper img {
@@ -32,4 +33,10 @@
 .contact_bg img {
     max-width: 1026px;
     width: 100%;
+}
+
+@media screen and (max-width: 640px) {
+    .contact_us_logo_wrapper {
+        padding-top: 90px;
+    }
 }
