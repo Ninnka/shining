@@ -9,11 +9,13 @@ require(["common"], function (common) {
   var nav = document.querySelector(".nav");
 
   for (var i = 0; i < content_item_wrappers.length; i++) {
-    var img = content_item_wrappers[i].querySelector("img");
-    var desc_title = content_item_wrappers[i].querySelector(".desc_title");
-    var desc_main = content_item_wrappers[i].querySelector(".desc_main");
+    // var img = content_item_wrappers[i].querySelector("img");
+    // var desc_title = content_item_wrappers[i].querySelector(".desc_title");
+    // var desc_main = content_item_wrappers[i].querySelector(".desc_main");
     content_item_wrappers[i].addEventListener("mouseover", function () {
       var img = this.querySelector("img");
+      var desc_title = this.querySelector(".desc_title");
+      var desc_main = this.querySelector(".desc_main");
       var tmpSrc = img.src;
       var newSrc = tmpSrc.replace("1.jpg", "2.jpg");
       img.src = newSrc;
@@ -22,6 +24,9 @@ require(["common"], function (common) {
       desc_main.style.color = "rgb(102, 102, 102)";
     }, false);
     content_item_wrappers[i].addEventListener("mouseout", function () {
+      var img = this.querySelector("img");
+      var desc_title = this.querySelector(".desc_title");
+      var desc_main = this.querySelector(".desc_main");
       var tmpSrc = img.src;
       var newSrc = tmpSrc.replace("2.jpg", "1.jpg");
       img.src = newSrc;
