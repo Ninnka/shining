@@ -150,7 +150,7 @@ module.exports = {
     "wrap-regex": 2,
     "no-use-before-define": 1,
     "no-loop-func": 1,
-    "no-var": 2
+    "no-var": 0
       // "babel/arrow-parens": [2, "as-needed"],
       // "babel/generator-star-spacing": [2, "before"]
   },

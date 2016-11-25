@@ -1,33 +1,33 @@
-window.onload = function () {
-  navListener();
-  addNavIconClickListener();
-  addWindowResizeListener();
+require(["common"], function (common) {
+  common.navListener();
+  common.addNavIconClickListener();
+  common.addWindowResizeListener();
 
-  let currentPage = 0;
-  let maxPages = 6;
+  var currentPage = 0;
+  var maxPages = 6;
 
-  let wrapper = document.querySelector(".wrapper");
-  let contents = document.querySelectorAll(".content_bg");
+  var wrapper = document.querySelector(".wrapper");
+  var contents = document.querySelectorAll(".content_bg");
 
-  let doc_clientHeight;
+  var doc_clientHeight;
 
-  let nav = document.querySelector("#head");
-  let content_maintitle_wrapper = document.querySelector(".content_maintitle_wrapper");
-  let contact_wrapper = document.querySelector(".contact");
-  let yl = document.querySelector(".yl");
-  let copyright_wrapper = document.querySelector(".copyright");
-  let footer_height = contact_wrapper.offsetHeight + yl.offsetHeight + copyright_wrapper.offsetHeight;
-  let top_height = nav.offsetHeight + content_maintitle_wrapper.offsetHeight;
+  var nav = document.querySelector("#head");
+  var content_maintitle_wrapper = document.querySelector(".content_maintitle_wrapper");
+  var contact_wrapper = document.querySelector(".contact");
+  var yl = document.querySelector(".yl");
+  var copyright_wrapper = document.querySelector(".copyright");
+  var footer_height = contact_wrapper.offsetHeight + yl.offsetHeight + copyright_wrapper.offsetHeight;
+  var top_height = nav.offsetHeight + content_maintitle_wrapper.offsetHeight;
   // console.log("top_height: " + top_height);
 
-  let back_to_top = document.querySelector("#backtotop");
+  var back_to_top = document.querySelector("#backtotop");
 
   // 调整宽度
   function adjustHeightAndBg() {
-    let bgStrPrefix = "../public/imgs/BIM-bg";
-    let bgStrAfter = ".png";
+    var bgStrPrefix = "../public/imgs/BIM-bg";
+    var bgStrAfter = ".png";
     doc_clientHeight = document.documentElement.clientHeight;
-    for (let i = 0; i < contents.length; i++) {
+    for (var i = 0; i < contents.length; i++) {
       contents[i].style.height = doc_clientHeight + "px";
       contents[i].style.background = "url(" + bgStrPrefix + (i + 1) + bgStrAfter + ")";
     }
@@ -36,7 +36,7 @@ window.onload = function () {
 
   function resetHeight() {
     doc_clientHeight = document.documentElement.clientHeight;
-    for (let i = 0; i < contents.length; i++) {
+    for (var i = 0; i < contents.length; i++) {
       contents[i].style.height = doc_clientHeight + "px";
     }
   }
@@ -44,7 +44,7 @@ window.onload = function () {
   function adjustMarginTop() {
     doc_clientHeight = document.documentElement.clientHeight;
     top_height = nav.offsetHeight + content_maintitle_wrapper.offsetHeight;
-    let tmpMarginTop;
+    var tmpMarginTop;
     if (currentPage >= 1 && currentPage <= maxPages) {
       tmpMarginTop = (currentPage - 1) * doc_clientHeight + top_height;
       wrapper.style["margin-top"] = -tmpMarginTop + "px";
@@ -58,12 +58,16 @@ window.onload = function () {
     // console.log("top_height: " + top_height);
   });
 
-  let isWheel = false;
+  var isWheel = false;
   document.addEventListener("wheel", function (event) {
+    var tmpTop;
+    var currentMT;
     if (event.deltaY > 0 && !isWheel && currentPage <= 5) {
       isWheel = true;
-      let tmpTop;
-      let currentMT = wrapper.style["margin-top"];
+      // var tmpTop;
+      // var currentMT = wrapper.style["margin-top"];
+      currentMT = wrapper.style["margin-top"];
+
       currentMT = currentMT === "" ? 0 : parseInt(currentMT, 10);
       if (currentPage === 0) {
         tmpTop = top_height;
@@ -99,8 +103,10 @@ window.onload = function () {
     }
     if (event.deltaY < 0 && !isWheel && currentPage >= 1) {
       isWheel = true;
-      let tmpTop;
-      let currentMT = wrapper.style["margin-top"];
+      // var tmpTop;
+      // var currentMT = wrapper.style["margin-top"];
+      currentMT = wrapper.style["margin-top"];
+
       currentMT = currentMT === "" ? 0 : parseInt(currentMT, 10);
       // console.log("currentMT: " + currentMT);
       if (currentPage === 1) {
@@ -150,8 +156,8 @@ window.onload = function () {
   }, false);
 
   function getElementFullOffsetTop(obj) {
-    let offsetTop = obj.offsetTop;
-    let p = obj.offsetParent;
+    var offsetTop = obj.offsetTop;
+    var p = obj.offsetParent;
     while (p !== null) {
       offsetTop += p.offsetTop;
       p = p.offsetParent;
@@ -176,10 +182,10 @@ window.onload = function () {
   function startMove(obj, json, timerInterva, func) {
     clearInterval(obj.timer);
     obj.timer = setInterval(function () {
-      let isStop = true;
+      var isStop = true;
       // 遍历json中的数据
-      for (let attr in json) {
-        let icur = 0;
+      for (var attr in json) {
+        var icur = 0;
         if (attr === "opacity") {
           icur = parseInt(parseFloat(getStyle(obj, attr), 10) * 100, 10);
         } else {
@@ -187,7 +193,7 @@ window.onload = function () {
         }
 
         //设置速度
-        let speed = (json[attr] - icur) / 8;
+        var speed = (json[attr] - icur) / 8;
         speed = speed > 0 ? Math.ceil(speed) : Math.floor(speed);
         // 运动跟停止分开
         // 检测终止,如果没达到就isStop = false
@@ -214,5 +220,4 @@ window.onload = function () {
 
     }, 16);
   }
-
-};
+});

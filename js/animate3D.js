@@ -1,16 +1,16 @@
-window.onload = function () {
-  navListener();
-  addNavIconClickListener();
-  addWindowResizeListener();
+require(["common"], function (common) {
+  common.navListener();
+  common.addNavIconClickListener();
+  common.addWindowResizeListener();
 
-  let back_to_top = document.querySelector("#backtotop");
-  let to_top_timer;
-  let inScroll = false;
+  var back_to_top = document.querySelector("#backtotop");
+  var to_top_timer;
+  var inScroll = false;
 
   function moveAnimation(obj, attr, target, func) {
     clearInterval(to_top_timer);
-    let speed = 10;
-    let currentScrollTop;
+    var speed = 10;
+    var currentScrollTop;
     to_top_timer = setInterval(function () {
       currentScrollTop = obj[attr];
       if (currentScrollTop <= target) {
@@ -30,4 +30,4 @@ window.onload = function () {
       moveAnimation(document.documentElement, "scrollTop", 0);
     }
   }, false);
-};
+});

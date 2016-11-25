@@ -54,14 +54,18 @@
                 Copyright © 1998-2015 shining Group
             </div>
         </div>
-        <script src="../js/common.js" charset="utf-8"></script>
+        <script src="../js/require.js" charset="utf-8"></script>
         <script type="text/javascript">
-            window.onload = function() {
-                navListener();
-                addNavIconClickListener();
-                addWindowResizeListener();
-
-            }
+            require.config({
+                paths: {
+                    "common": "../js/common"
+                }
+            });
+            require(["common"], function(common) {
+                common.navListener();
+                common.addNavIconClickListener();
+                common.addWindowResizeListener();
+            });
 
         </script>
     </body>

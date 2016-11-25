@@ -1,21 +1,21 @@
 define(function () {
-  let currentNav = 1;
-  let nav_lis = document.querySelectorAll(".nav_wrapper li");
-
-  let nav_icon = document.querySelector(".nav_icon");
-  let nav_wrapper = document.querySelector(".nav_wrapper");
-  let nav_common = document.querySelector(".nav");
+  var currentNav = 1;
+  var nav_lis = document.querySelectorAll(".nav_wrapper li");
+  var nav_icon = document.querySelector(".nav_icon");
+  var nav_wrapper = document.querySelector(".nav_wrapper");
+  var nav_common = document.querySelector(".nav");
 
   function navListener() {
-    for (let i = 0; i < nav_lis.length; i++) {
+    var i = 0;
+    for (; i < nav_lis.length; i++) {
       nav_lis[i].addEventListener("mouseover", function () {
-        nav_lis[i].style.background = "rgb(235,245,131)";
+        this.style.background = "rgb(235,245,131)";
       }, false);
       nav_lis[i].addEventListener("mouseout", function () {
-        if (nav_lis[i].className === "nav_item_active") {
-          nav_lis[i].style.background = "rgb(207, 219, 0)";
+        if (this.className === "nav_item_active") {
+          this.style.background = "rgb(207, 219, 0)";
         } else {
-          nav_lis[i].style.background = "";
+          this.style.background = "";
         }
       }, false);
 
@@ -23,8 +23,8 @@ define(function () {
         nav_lis[currentNav - 1].style.background = "";
         nav_lis[currentNav - 1].className = "nav_item_normal";
         currentNav = i + 1;
-        nav_lis[i].style.background = "";
-        nav_lis[i].className = "nav_item_active";
+        this.style.background = "";
+        this.className = "nav_item_active";
       }, false);
     }
   }
