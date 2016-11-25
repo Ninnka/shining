@@ -16,6 +16,24 @@ require(["common"], function (common) {
 
   var isScroll = false;
 
+  var resize_timeout;
+
+  var srcStrPrefix = "../public/imgs/P_";
+  var srcStrAfter = ".jpg";
+  var currentFDImgIndex = 0;
+  var tmpImgSrc;
+  var falldown_wrapper = document.querySelector(".falldown_wrapper");
+  var falldownLis = document.querySelectorAll(".falldown_wrapper li");
+
+  var heightArr = [];
+  var total = 0;
+  var marginBottom = parseInt((falldown_wrapper.offsetWidth * 0.01)
+    .toFixed(0));
+
+  var back_to_top = document.querySelector("#backtotop");
+  var to_top_timer;
+  var inScroll = false;
+
   function getStyle(obj, attr) {
     if (obj.currentStyle) {
       return obj.currentStyle[attr];
@@ -127,7 +145,6 @@ require(["common"], function (common) {
   }
   autoScroll();
 
-  var resize_timeout;
   // 调整banner的偏移值
   window.addEventListener("resize", function () {
     clearTimeout(resize_timeout);
@@ -147,12 +164,6 @@ require(["common"], function (common) {
     }
   });
 
-  var srcStrPrefix = "../public/imgs/P_";
-  var srcStrAfter = ".jpg";
-  var currentFDImgIndex = 0;
-  var tmpImgSrc;
-  var falldown_wrapper = document.querySelector(".falldown_wrapper");
-  var falldownLis = document.querySelectorAll(".falldown_wrapper li");
 
   // function createImg() {
   //   var tmpLi = document.createElement("li");
@@ -206,10 +217,7 @@ require(["common"], function (common) {
   // }
   // createImg();
 
-  var heightArr = [];
-  var total = 0;
-  var marginBottom = parseInt((falldown_wrapper.offsetWidth * 0.01)
-    .toFixed(0));
+
 
   function insertToFallDown(i) {
     tmpImgSrc = srcStrPrefix + "0" + i % 16 + srcStrAfter;
@@ -261,16 +269,12 @@ require(["common"], function (common) {
 
   function createFallDown() {
     var tmpTotal = total;
-    for (var i = total; i < tmpTotal + 16; i++) {
+    for (var i = total; i < tmpTotal + 8; i++) {
       insertToFallDown(i);
       total++;
     }
   }
   createFallDown();
-
-  var back_to_top = document.querySelector("#backtotop");
-  var to_top_timer;
-  var inScroll = false;
 
   back_to_top.addEventListener("click", function () {
     if (!inScroll) {
@@ -278,15 +282,6 @@ require(["common"], function (common) {
       moveAnimation(document.documentElement, "scrollTop", 0);
     }
   }, false);
-
-  function getStyle(obj, attr) {
-    // 第一个参数:具体的元素
-    // 第二个参数:具体属性 ,例如width等
-    if (obj.currentStyle) {
-      return obj.currentStyle[attr];
-    }
-    return getComputedStyle(obj, false)[attr];
-  }
 
   function moveAnimation(obj, attr, target, func) {
     clearInterval(to_top_timer);
@@ -318,6 +313,7 @@ require(["common"], function (common) {
   // 懒加载
   var load_more_flag = 0;
   window.addEventListener("scroll", function () {
+    // console.log(getElementFullOffsetTop(falldown_wrapper));
     if (getElementFullOffsetTop(falldown_wrapper) + falldown_wrapper.offsetHeight - document.documentElement.scrollTop < document.documentElement.clientHeight) {
       if (load_more_flag <= 1) {
         createFallDown();
