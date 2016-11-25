@@ -1,7 +1,8 @@
-require(["common"], function (common) {
-  common.navListener();
-  common.addNavIconClickListener();
-  common.addWindowResizeListener();
+window.onload = function () {
+  navListener();
+  addNavIconClickListener();
+  addWindowResizeListener();
+
 
   let imgs_wrapper = document.querySelector(".banner_wrapper");
   let imgs = document.querySelectorAll(".banner_wrapper li");
@@ -62,6 +63,7 @@ require(["common"], function (common) {
 
     }, 16);
   }
+
 
   function changeIndexBackground(i) {
     for (let j = 0; j < indexes.length; j++) {
@@ -124,6 +126,23 @@ require(["common"], function (common) {
 
   let resize_timeout;
   // 调整banner的偏移值
+  // window.onresize = function () {
+  //   clearTimeout(resize_timeout);
+  //   clearInterval(imgs_wrapper_timer);
+  //   if (isScroll === false) {
+  //     let tmp = imgs_wrapper.offsetWidth;
+  //     // console.log("currentImg:" + currentImg);
+  //     imgs_wrapper.style.left = -currentImg * tmp + "px";
+  //   }
+  //   resize_timeout = setTimeout(function () {
+  //     autoScroll();
+  //   }, 2500);
+  //   if (document.documentElement.clientWidth >= 680) {
+  //     nav_wrapper.style.display = "";
+  //     nav_icon.className = "nav_icon";
+  //     nav_common.className = "nav";
+  //   }
+  // };
   window.addEventListener("resize", function () {
     clearTimeout(resize_timeout);
     clearInterval(imgs_wrapper_timer);
@@ -305,6 +324,14 @@ require(["common"], function (common) {
 
   // 懒加载
   let load_more_flag = 0;
+  // window.onscroll = function () {
+  //   if (getElementFullOffsetTop(falldown_wrapper) + falldown_wrapper.offsetHeight - document.documentElement.scrollTop < document.documentElement.clientHeight) {
+  //     if (load_more_flag <= 1) {
+  //       createFallDown();
+  //       load_more_flag++;
+  //     }
+  //   }
+  // };
   window.addEventListener("scroll", function () {
     if (getElementFullOffsetTop(falldown_wrapper) + falldown_wrapper.offsetHeight - document.documentElement.scrollTop < document.documentElement.clientHeight) {
       if (load_more_flag <= 1) {
@@ -313,4 +340,5 @@ require(["common"], function (common) {
       }
     }
   });
-});
+
+};

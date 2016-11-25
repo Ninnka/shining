@@ -3,7 +3,8 @@
     "globals": {
       "$": true,
       "_": true,
-      "__dirname": true
+      "__dirname": true,
+      "define": true
     },
     // 语言环境选项
     "env": {
