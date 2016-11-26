@@ -276,14 +276,6 @@ require(["common"], function (common) {
   }
   createFallDown();
 
-  back_to_top.addEventListener("click", function () {
-    if (!inScroll) {
-      inScroll = true;
-      var obj = document.body.scrollTop === 0 ? document.documentElement : document.body;
-      moveAnimation(obj, "scrollTop", 0);
-    }
-  }, false);
-
   function moveAnimation(obj, attr, target, func) {
     clearInterval(to_top_timer);
     var speed = 40;
@@ -300,6 +292,14 @@ require(["common"], function (common) {
       obj[attr] = currentScrollTop;
     }, 1);
   }
+
+  back_to_top.addEventListener("click", function () {
+    if (!inScroll) {
+      inScroll = true;
+      var obj = document.body.scrollTop === 0 ? document.documentElement : document.body;
+      moveAnimation(obj, "scrollTop", 0);
+    }
+  }, false);
 
   function getElementFullOffsetTop(obj) {
     var offsetTop = obj.offsetTop;

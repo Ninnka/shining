@@ -190,25 +190,84 @@ require(["common"], function (common) {
     }
   });
 
-  back_to_top.addEventListener("click", function () {
-    if (!isWheel) {
-      isWheel = true;
-      startMove(wrapper, {
-        "margin-top": 0
-      }, undefined, function () {
-        isWheel = false;
-        currentPage = 0;
-      });
-    }
-  }, false);
 
-  function getElementFullOffsetTop(obj) {
-    var offsetTop = obj.offsetTop;
-    var p = obj.offsetParent;
-    while (p !== null) {
-      offsetTop += p.offsetTop;
-      p = p.offsetParent;
-    }
-    return offsetTop;
+
+  var browser = {
+    versions: function () {
+      var u = navigator.userAgent;
+      var app = navigator.appVersion;
+      return {
+        trident: u.indexOf("Trident") > -1,
+        presto: u.indexOf("Presto") > -1,
+        webKit: u.indexOf("AppleWebKit") > -1,
+        gecko: u.indexOf("Gecko") > -1 && u.indexOf("KHTML") === -1,
+        mobile: !!u.match(/AppleWebKit.*Mobile.*/),
+        ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/),
+        android: u.indexOf("Android") > -1 || u.indexOf("Linux") > -1,
+        iPhone: u.indexOf("iPhone") > -1,
+        iPad: u.indexOf("iPad") > -1,
+        webApp: u.indexOf("Safari") === -1
+      };
+    }(),
+    language: (navigator.browserLanguage || navigator.language)
+      .toLowerCase()
+  };
+
+  var inScroll = false;
+  var to_top_timer;
+
+  function moveAnimation(obj, attr, target, func) {
+    clearInterval(to_top_timer);
+    var speed = 40;
+    var currentScrollTop;
+    to_top_timer = setInterval(function () {
+      currentScrollTop = obj[attr];
+      if (currentScrollTop <= target) {
+        clearInterval(to_top_timer);
+        obj[attr] = 0;
+        inScroll = false;
+        return;
+      }
+      currentScrollTop -= speed;
+      obj[attr] = currentScrollTop;
+    }, 1);
   }
+
+  function checkPlatform() {
+    var platformInfo = browser.versions;
+    if (platformInfo.mobile) {
+      document.body.style.overflow = "visible";
+      back_to_top.addEventListener("click", function () {
+        if (!inScroll) {
+          inScroll = true;
+          var obj = document.body.scrollTop === 0 ? document.documentElement : document.body;
+          moveAnimation(obj, "scrollTop", 0);
+        }
+      }, false);
+    } else {
+      back_to_top.addEventListener("click", function () {
+        if (!isWheel) {
+          isWheel = true;
+          startMove(wrapper, {
+            "margin-top": 0
+          }, undefined, function () {
+            isWheel = false;
+            currentPage = 0;
+          });
+        }
+      }, false);
+    }
+  }
+  checkPlatform();
+
+
+  // function getElementFullOffsetTop(obj) {
+  //   var offsetTop = obj.offsetTop;
+  //   var p = obj.offsetParent;
+  //   while (p !== null) {
+  //     offsetTop += p.offsetTop;
+  //     p = p.offsetParent;
+  //   }
+  //   return offsetTop;
+  // }
 });

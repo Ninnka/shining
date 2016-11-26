@@ -344,7 +344,7 @@
         "func-names": 0,
         // 文件末尾强制换行
         "eol-last": 2,
-        "indent": [2, 0, { "SwitchCase": 0 }],
+        "indent": [2, 2, { "SwitchCase": 0 }],
         // 强制在对象字面量的属性中键和值之间使用一致的间距
         "key-spacing": [2, { "beforeColon": false, "afterColon": true }],
         // 强制使用一致的换行风格
@@ -501,7 +501,7 @@
         // 禁止不必要的计算性能键对象的文字
         "no-useless-computed-key":0,
         // 要求使用 let 或 const 而不是 var
-        "no-var": 2,
+        "no-var": 0,
         // 要求或禁止对象字面量中方法和属性使用简写语法
         "object-shorthand": 0,
         // 要求使用箭头函数作为回调
